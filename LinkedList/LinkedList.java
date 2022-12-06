@@ -28,6 +28,7 @@ public class LinkedList<T>{
             outOfIndexError();
             return null;
         }
+        if (index == 0) return getFirst();
         if (index == size - 1) return getLast();
         Node<T> node = head;
         for (int i = 0; i < index; i++)
@@ -88,6 +89,10 @@ public class LinkedList<T>{
     public void edit(T data, int index) {
         if (index >= size || index < 0) {
             outOfIndexError();
+            return;
+        }
+        if(index == 0){
+            head.data = data;
             return;
         }
         if(index == size - 1){
@@ -197,6 +202,7 @@ public class LinkedList<T>{
             if(i < size - 1) s.append(", ");
             node = node.next;
         }
+        s.append(" ]");
         return s.toString();
     }
 
