@@ -28,7 +28,6 @@ public class LinkedList<T>{
             outOfIndexError();
             return null;
         }
-        if (index == 0) return getFirst();
         if (index == size - 1) return getLast();
         Node<T> node = head;
         for (int i = 0; i < index; i++)
@@ -91,10 +90,6 @@ public class LinkedList<T>{
             outOfIndexError();
             return;
         }
-        if(index == 0){
-            head.data = data;
-            return;
-        }
         if(index == size - 1){
             tail.data = data;
             return;
@@ -144,18 +139,23 @@ public class LinkedList<T>{
         missingDataError();
     }
 
-    public T[] toArray() {
-        T[] arr = (T[]) new Object[size];
+    @SuppressWarnings("unchecked")
+    public <E> E[] toArray(E[] a) {
+        a =  (E[])java.lang.reflect.Array.newInstance(
+                a.getClass().getComponentType(), size);
+        Object[] result = a;
         Node<T> node = head;
         for (int i = 0; i < size; i++){
-            arr[i] = node.data;
+            result[i] = node.data;
             node = node.next;
         }
-        return arr;
+        return a;
     }
 
+    @SuppressWarnings("unchecked")
     public LinkedList<T> copy(){
-        return new LinkedList<>(toArray());
+        T[] a = (T[]) new Object[0];
+        return new LinkedList<>(toArray(a));
     }
 
     public void merge(LinkedList<T> B){
@@ -166,8 +166,7 @@ public class LinkedList<T>{
     public LinkedList<T> mergeCopy(LinkedList<T> A, LinkedList<T> B){
         LinkedList<T> A_copy = A.copy();
         LinkedList<T> B_copy = B.copy();
-        A_copy.tail.next = B_copy.head;
-        A_copy.size += B_copy.size;
+        A_copy.merge(B_copy);
         return A_copy;
     }
 
@@ -196,13 +195,13 @@ public class LinkedList<T>{
 
     public String toString() {
         Node<T> node = head;
-        StringBuilder s = new StringBuilder("[ ");
+        StringBuilder s = new StringBuilder("[");
         for (int i = 0; i < size; i++){
             s.append(node.data);
             if(i < size - 1) s.append(", ");
             node = node.next;
         }
-        s.append(" ]");
+        s.append("]");
         return s.toString();
     }
 
