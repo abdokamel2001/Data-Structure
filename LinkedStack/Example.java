@@ -1,4 +1,4 @@
-public class LinkedStackEx {
+public class Example {
     public static void main(String[] args) {
         LinkedStack<Double> s1 = new LinkedStack<>(1.,3.,4.,7.5);
         System.out.println(s1);
