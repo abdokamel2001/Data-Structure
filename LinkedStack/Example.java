@@ -1,10 +1,11 @@
-public class StackEx {
+public class LinkedStackEx {
     public static void main(String[] args) {
-        Stack<Boolean> s1 = new Stack<>(5);
-        s1.push(Boolean.TRUE);
-        s1.push(false);
-        s1.push(Boolean.FALSE);
-        s1.push(true);
+        LinkedStack<Double> s1 = new LinkedStack<>(1.,3.,4.,7.5);
+        System.out.println(s1);
+        double a = s1.pop();
+        double b = s1.pop();
+        System.out.println(s1);
+        s1.push(a/b);
         System.out.println(s1);
         System.out.println("Removing : " + s1.pop());
         System.out.println("Removing : " + s1.pop());
