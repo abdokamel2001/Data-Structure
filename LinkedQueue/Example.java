@@ -1,4 +1,4 @@
-public class LinkedQueueEx {
+public class Example {
     public static void main(String[] args) {
         LinkedQueue<Integer> q1 = new LinkedQueue<>(1,3,6,7,9);
         q1.dequeue();
