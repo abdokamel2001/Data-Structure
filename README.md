@@ -1,2 +1,6 @@
-# Data-Structure
-A collection of data structure types such as Queue, Stack, Linked lists
+# Data Structures
+
+This repository contains implementations of the Queue, Stack, Linked List, Linked Queue, and Linked Stack data structures in Java.<br>
+Each folder contains an example class with a main method to test the functionality of the implemented data structure.<br><br>
+The Queue and Stack folders contain array-based implementations, while the Linked List, Linked Queue, and Linked Stack folders contain linked list-based implementations.<br>
+The linked list-based data structures make use of the Linked List class also contained in this repository.
